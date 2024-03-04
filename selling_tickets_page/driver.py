@@ -1,7 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait  # creates a wait
 from selenium.webdriver.support import expected_conditions as EC  # alias to use as expected_conditions is too long
-from selenium.webdriver.support.ui import Select
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 
@@ -14,7 +13,7 @@ def webdriver_instance():
     my_driver = webdriver.Chrome(service=service, options=options)
     return my_driver
 
-
+webdriver_instance()
 class Actions:
     def __init__(self, driver):
         self.driver = driver
