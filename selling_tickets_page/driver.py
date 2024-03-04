@@ -13,7 +13,7 @@ def webdriver_instance():
     my_driver = webdriver.Chrome(service=service, options=options)
     return my_driver
 
-webdriver_instance()
+
 class Actions:
     def __init__(self, driver):
         self.driver = driver
