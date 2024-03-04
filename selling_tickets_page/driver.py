@@ -1,15 +1,18 @@
+from selenium.webdriver.chrome.service import Service as ChromeService
+from webdriver_manager.chrome import ChromeDriverManager
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait  # creates a wait
 from selenium.webdriver.support import expected_conditions as EC  # alias to use as expected_conditions is too long
 from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.chrome.service import Service
+
 
 
 def webdriver_instance():
     options = Options()
-    service = Service()
+    service = ChromeService(ChromeDriverManager().install())
+
     options.add_argument('start-maximized')
-    options.add_argument('disable-extentions')
+    options.add_argument('disable-extensions')
     my_driver = webdriver.Chrome(service=service, options=options)
     return my_driver
 
