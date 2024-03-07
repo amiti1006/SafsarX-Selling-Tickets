@@ -1,7 +1,10 @@
 from selenium.webdriver.common.by import By
 
-# first process in selling
+#home_page
 selling_tickets_button = (By.XPATH, "//p[text()='מכירת כרטיסים']")
+
+# first process in selling
+
 next_button = (By.XPATH, "//button[text()='הבא']")
 
 category_field = (By.ID, '//*[@id="category"]/div/div/div/div/div/div')
@@ -10,16 +13,16 @@ eventDate_field = (By.ID, "//*[@id='eventInfoForm_eventDate']")
 where_event_field = ''
 eventTime_field = (By.ID, "//*[@id='eventInfoForm_eventTime']")
 
-its_few_days = ''
+few_days_radio = ''
 
 artist_radio_locator = (By.XPATH, "//label[text()='כמה אמנים']/preceding-sibling/input[@type='radio']")
 one_artist_radio_locator = (By.XPATH, "//label[text()='אמן אחד']/preceding-sibling/input[@type='radio']")
 
-# soccer
+# sport
 
 which_branch_field = (By.ID, 'eventInfoForm_subCategory')
-type_of_game_regular = (By.XPATH, '//*[@id="eventInfoForm_gameType"]/label[1]/span[1]/input')
-type_of_game_tournament = (By.XPATH, '//*[@id="eventInfoForm_gameType"]/label[2]/span[1]/input')
+type_of_game_regular_radio = (By.XPATH, '//*[@id="eventInfoForm_gameType"]/label[1]/span[1]/input')
+type_of_game_tournament_radio = (By.XPATH, '//*[@id="eventInfoForm_gameType"]/label[2]/span[1]/input')
 
 # regular & tournament
 game_name = (By.ID, 'eventInfoForm_gameName')

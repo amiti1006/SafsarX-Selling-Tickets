@@ -1,0 +1,2 @@
+from safsarX_selling_Tickets.selling_tickets_page.funcs import  events_details
+

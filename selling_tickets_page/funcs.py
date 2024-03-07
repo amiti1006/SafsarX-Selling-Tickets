@@ -36,7 +36,7 @@ def is_theater(category_text):
     pass
 
 
-def events_deatails(category_text, one_artist_bool, artist_name_text, event_date_text, event_time_text,
+def events_details(category_text, one_artist_bool, artist_name_text, event_date_text, event_time_text,
                     where_event_text):
     category_field = actions.find_element(safsarX_selling_Tickets.data_of_elements.data.category_field)
     actions.send_keys(category_field, category_text)
