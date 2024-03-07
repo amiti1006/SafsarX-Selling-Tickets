@@ -1,28 +1,31 @@
 from selenium.webdriver.common.by import By
 
-#home_page
-selling_tickets_button = (By.XPATH, "//p[text()='מכירת כרטיסים']")
+# GENERAL
+selling_tickets_button = (By.XPATH, '"//*[@id="root"]/div[1]/div/nav/p"')
+next_button = (By.XPATH, '//*[@id="eventInfoForm"]/div[4]/button')
 
-# first process in selling
 
-next_button = (By.XPATH, "//button[text()='הבא']")
+# - - - EVENT INFO [1/3] - - - #
 
-category_field = (By.ID, '//*[@id="category"]/div/div/div/div/div/div')
-artistName_field = (By.ID, "//*[@id='eventInfoForm_artistName']")
-eventDate_field = (By.ID, "//*[@id='eventInfoForm_eventDate']")
-where_event_field = ''
-eventTime_field = (By.ID, "//*[@id='eventInfoForm_eventTime']")
+    #UPPER [1/3]
+category_name_field = (By.XPATH, '//*[@id="category"]/div/div/div/div/div/div/div/span[2]')
+sports_type_name_field = (By.XPATH, '//*[@id="eventInfoForm_subCategory"]')
+    #MIDDLE [2/3]
+showtype_single_radio = (By.XPATH, '//*[@id="eventInfoForm_artistType"]/label[1]/span[1]/input')
+showtype_multiple_radio = (By.XPATH, '//*[@id="eventInfoForm_artistType"]/label[2]/span[1]/input')
+performer_name_field = (By.XPATH, '//*[@id="eventInfoForm_artistName"]')
+performance_name_field = (By.XPATH, '//*[@id="eventInfoForm_eventName"]')
+    #LOWER [3/3]
+event_date_calendar = (By.XPATH, '//*[@id="eventInfoForm_eventDate"]/input')
+event_date_range_checkbox = (By.XPATH, '//*[@id="eventInfoForm_eventDate"]/div/div[2]/div[1]/label/label/span/input')
+event_location_field = (By.XPATH, '//*[@id="eventInfoForm_eventLocation"]')
+event_time_field = (By.XPATH, '//*[@id="eventInfoForm_eventTime"]')
 
-few_days_radio = ''
-
-artist_radio_locator = (By.XPATH, "//label[text()='כמה אמנים']/preceding-sibling/input[@type='radio']")
-one_artist_radio_locator = (By.XPATH, "//label[text()='אמן אחד']/preceding-sibling/input[@type='radio']")
-
-# sport
-
+# Sport
 which_branch_field = (By.ID, 'eventInfoForm_subCategory')
-type_of_game_regular_radio = (By.XPATH, '//*[@id="eventInfoForm_gameType"]/label[1]/span[1]/input')
-type_of_game_tournament_radio = (By.XPATH, '//*[@id="eventInfoForm_gameType"]/label[2]/span[1]/input')
+gametype_regular_radio = (By.XPATH, '//*[@id="eventInfoForm_gameType"]/label[1]/span[1]/input')
+gametype_tournament_radio = (By.XPATH, '//*[@id="eventInfoForm_gameType"]/label[2]/span[1]/input')
+
 
 # regular & tournament
 game_name = (By.ID, 'eventInfoForm_gameName')
