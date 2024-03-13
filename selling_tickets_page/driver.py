@@ -1,10 +1,10 @@
+from selenium.webdriver import Keys
 from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait  # creates a wait
 from selenium.webdriver.support import expected_conditions as EC  # alias to use as expected_conditions is too long
 from selenium.webdriver.chrome.options import Options
-
 
 
 def webdriver_instance():
@@ -31,7 +31,7 @@ class Actions:
     def send_keys(self, element, value):
         element.send_keys(value)
 
-    def get_attr(self, element, attribute):
+    def get_attribute(self, element, attribute):
         requested_attribute = element.get_attribute(attribute)
         return requested_attribute
 
@@ -44,4 +44,3 @@ class Actions:
     def find_elements(self, tuple_selector):
         my_elements = WebDriverWait(self.driver, 10).until(EC.presence_of_all_elements_located(tuple_selector))
         return my_elements
-
