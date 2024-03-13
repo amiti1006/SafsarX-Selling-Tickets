@@ -20,10 +20,26 @@ user_info_fields = {
 
 page1 = {
     "category": (By.ID, "eventInfoForm_category"),
+    "showtype_single_radio": (By.XPATH, '//*[@id="eventInfoForm_artistType"]/label[1]/span[1]/input'),
     "artist_name": (By.ID, "eventInfoForm_artistName"),
     "date": (By.ID, "eventInfoForm_eventDate"),
-    "time": (By.ID, "eventInfoForm_eventTime")
+    "eventLocation": (By.ID, 'eventInfoForm_eventLocation'),
+    "time": (By.ID, "eventInfoForm_eventTime"),
 }
+
+page1_1 = {
+"category": (By.ID, "eventInfoForm_category"),
+    "showtype_single_radio": (By.XPATH, '//*[@id="eventInfoForm_artistType"]/label[1]/span[1]/input'),
+    "artist_name": (By.ID, "eventInfoForm_artistName"),
+}
+
+page1_2 = {
+    "eventLocation": (By.ID, 'eventInfoForm_eventLocation'),
+    "time": (By.ID, "eventInfoForm_eventTime"),
+}
+
+
+
 page2 = {
   "ticket_type": (By.ID,"eventInfoForm_ticketType"),
   "ticket_quantity": (By.ID,"eventInfoForm_ticketQuantity"),
@@ -68,8 +84,6 @@ eventName = (By.ID, 'eventInfoForm_eventName')
 # second process in selling
 
 back_button = (By.XPATH, "//button[text()='חזרה']")
-next_button = (By.XPATH, "//button[text()='הבא']")
-
 
 sitting_details_field = (By.ID, "eventInfoForm_typeDescription")
 ticket_type_field = (By.ID, "eventInfoForm_ticketType")

@@ -2,7 +2,6 @@ import time
 
 from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.select import Select
 
 import safsarX_selling_Tickets.data_of_elements.data
 
@@ -14,12 +13,16 @@ def enter_inputs(actions, my_dict, *value):
     for key in my_dict.values():
         element = actions.find_element(key)
         dropdown = actions.get_attribute(element, 'aria-haspopup')
-        actions.send_keys(element, value[index])
-        list_of_elements.append(element)
-        if dropdown == "listbox":
-            time.sleep(5)
-            actions.send_keys(element,Keys.RETURN)
-
+        isradio = actions.get_attribute(element, 'type')
+        if isradio != 'radio':
+            actions.send_keys(element, value[index])
+            list_of_elements.append(element)
+            if dropdown == "listbox":
+                time.sleep(3)
+                actions.send_keys(element, Keys.RETURN)
+        elif isradio == 'radio':
+            actions.click_element(element)
+            index = index - 1
         index = index + 1
 
 
@@ -193,10 +196,17 @@ def page_verification_screeen(actions, xpathHeader, xpath_Title, xpath_subtitle,
     return page
 
 
-def page1_selling(actions, artist_name_text, event_date_text,
-                  event_time_text, where_event_text):
-    enter_inputs(actions, safsarX_selling_Tickets.data_of_elements.data.page1,
-                 artist_name_text, event_date_text, event_time_text, where_event_text)
-    time.sleep(5)
-    next_button = actions.find_element(safsarX_selling_Tickets.data_of_elements.data.next_button)
+def page1_event_info(actions, category_name, artist_name, day, eventLocation, time):
+    enter_inputs(actions, safsarX_selling_Tickets.data_of_elements.data.page1_1, category_name, artist_name)
+
+    actions.find_element(safsarX_selling_Tickets.data_of_elements.data.page1.get("date")).click()
+    actions.find_element((By.XPATH, f".//div[text()={day}]")).click()
+
+    enter_inputs(actions, safsarX_selling_Tickets.data_of_elements.data.page1_2, eventLocation, time)
+
+    next_button = actions.find_element((By.XPATH, "//button[text()='הבא']"))
     actions.click_element(next_button)
+
+
+def page2_ticket_info():
+    pass

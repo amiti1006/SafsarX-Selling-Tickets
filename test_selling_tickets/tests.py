@@ -1,12 +1,12 @@
-import time
 
+import time
 from selenium.webdriver.common.by import By
 
 import safsarX_selling_Tickets
 from safsarX_selling_Tickets.data_of_elements import data
 from safsarX_selling_Tickets.selling_tickets_page.driver import webdriver_instance, Actions
 from safsarX_selling_Tickets.selling_tickets_page.funcs import page_start_screeen, \
-    navigation_to_selling_tickets, register_page, page_verification_screeen, page1_selling
+    navigation_to_selling_tickets, register_page, page_verification_screeen, page1_selling, page1_event_info
 import pytest
 
 base_url = "https://portal-dev.safsarglobal.link/"
@@ -14,7 +14,8 @@ my_driver = webdriver_instance()
 my_driver.get(base_url)
 actions = Actions(my_driver)
 
-#elements = page_start_screeen(actions)
+
+# elements = page_start_screeen(actions)
 
 
 def test_sent_to_login_register_page():
@@ -66,10 +67,8 @@ def test_Verification_Screen_structure(expected_text):
 
 
 def test_temp():
-    navigation_to_selling_tickets(actions, '0533363708')
-    page1_selling(actions, 'ילדים','מאיר בנאי','category_name','category_name')
+    navigation_to_selling_tickets(actions, '0547675277')
+    page1_event_info(actions, 'ילדים', 'מאיר בנאי','14', 'היכל התרבות רחובות', '10:59AM')
     time.sleep(5)
-
-
 
 
