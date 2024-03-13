@@ -38,12 +38,14 @@ page1_2 = {
     "time": (By.ID, "eventInfoForm_eventTime"),
 }
 
-
-
 page2 = {
+  "event_style": (By.CSS_SELECTOR,"input[value='עמידה']"),
   "ticket_type": (By.ID,"eventInfoForm_ticketType"),
   "ticket_quantity": (By.ID,"eventInfoForm_ticketQuantity"),
   "ticket_price": (By.CSS_SELECTOR,"input[type='number']")
+}
+page3_summary = {
+
 }
 
 # GENERAL

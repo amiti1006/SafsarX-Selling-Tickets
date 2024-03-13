@@ -22,7 +22,8 @@ def enter_inputs(actions, my_dict, *value):
                 actions.send_keys(element, Keys.RETURN)
         elif isradio == 'radio':
             actions.click_element(element)
-            index = index - 1
+            if index > 0:
+                index = index - 1
         index = index + 1
 
 
@@ -204,9 +205,8 @@ def page1_event_info(actions, category_name, artist_name, day, eventLocation, ti
 
     enter_inputs(actions, safsarX_selling_Tickets.data_of_elements.data.page1_2, eventLocation, time)
 
-    next_button = actions.find_element((By.XPATH, "//button[text()='הבא']"))
-    actions.click_element(next_button)
 
 
-def page2_ticket_info():
-    pass
+def page2_ticket_info(actions, event_type, ticket_quantity, ticket_price):
+    enter_inputs(actions, safsarX_selling_Tickets.data_of_elements.data.page2, event_style, event_type, ticket_quantity, ticket_price)
+    time.sleep(15)

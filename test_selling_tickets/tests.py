@@ -6,7 +6,8 @@ import safsarX_selling_Tickets
 from safsarX_selling_Tickets.data_of_elements import data
 from safsarX_selling_Tickets.selling_tickets_page.driver import webdriver_instance, Actions
 from safsarX_selling_Tickets.selling_tickets_page.funcs import page_start_screeen, \
-    navigation_to_selling_tickets, register_page, page_verification_screeen, page1_selling, page1_event_info
+    navigation_to_selling_tickets, register_page, page_verification_screeen, page1_event_info, \
+    page2_ticket_info
 import pytest
 
 base_url = "https://portal-dev.safsarglobal.link/"
@@ -69,6 +70,8 @@ def test_Verification_Screen_structure(expected_text):
 def test_temp():
     navigation_to_selling_tickets(actions, '0547675277')
     page1_event_info(actions, 'ילדים', 'מאיר בנאי','14', 'היכל התרבות רחובות', '10:59AM')
-    time.sleep(5)
+    next_button = actions.find_element((By.XPATH, "//button[text()='הבא']"))
+    actions.click_element(next_button)
+    page2_ticket_info(actions,'רגיל','כרטיס בודד','100')
 
 
