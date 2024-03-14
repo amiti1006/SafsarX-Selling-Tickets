@@ -44,8 +44,12 @@ page2 = {
   "ticket_quantity": (By.ID,"eventInfoForm_ticketQuantity"),
   "ticket_price": (By.CSS_SELECTOR,"input[type='number']")
 }
-page3_summary = {
-
+page3 = {
+    'fullName': (By.ID, 'eventInfoForm_fullName'),
+    'bankName': (By.ID, 'eventInfoForm_bankName'),
+    'branchNumber': (By.ID, 'eventInfoForm_branchNumber'),
+    'accountNumber': (By.ID, 'eventInfoForm_accountNumber'),
+    'terms':(By.NAME, 'terms')
 }
 
 # GENERAL

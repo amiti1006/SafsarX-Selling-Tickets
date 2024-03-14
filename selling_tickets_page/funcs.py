@@ -20,7 +20,7 @@ def enter_inputs(actions, my_dict, *value):
             if dropdown == "listbox":
                 time.sleep(3)
                 actions.send_keys(element, Keys.RETURN)
-        elif isradio == 'radio':
+        elif isradio == 'radio' or 'checkbox':
             actions.click_element(element)
             if index > 0:
                 index = index - 1
@@ -37,6 +37,11 @@ def find_page_elements(actions):
     paragraphs = actions.find_elements((By.TAG_NAME, 'p'))
 
     return buttons, h2_titles, paragraphs
+
+
+def click_on(actions, text_button):
+    button = actions.find_element((By.XPATH, f"//button[text()='{text_button}']"))
+    actions.click_element(button)
 
 
 def page_start_screeen(actions):
@@ -80,81 +85,15 @@ def is_theater(category_text):
     pass
 
 
-def events_details(actions, category_text, artist_name_text, event_date_text, event_time_text,
-                   where_event_text):
-    next_button = actions.find_element(safsarX_selling_Tickets.data_of_elements.data.next_button)
-
-    category_field = actions.find_element(safsarX_selling_Tickets.data_of_elements.data.category_name_field)
-    actions.send_keys(category_field, category_text)
-    time.sleep(3)
-    num_of_artist = actions.find_element(safsarX_selling_Tickets.data_of_elements.data.showtype_single_radio)
-    # if one_artist_bool:
-    #     num_of_artist = actions.find_element(safsarX_selling_Tickets.data_of_elements.data.showtype_single_radio)
-    # else:
-    #     num_of_artist = actions.find_element(safsarX_selling_Tickets.data_of_elements.data.showtype_multiple_radio)
-    num_of_artist.click()
-
-    enter_inputs(actions, safsarX_selling_Tickets.data_of_elements.data.log_in, category_text, artist_name_text,
-                 event_date_text, event_time_text, where_event_text)
-
-    # artist_name_field = actions.find_element(safsarX_selling_Tickets.data_of_elements.data.performer_name_field)
-    # actions.send_keys(artist_name_field, artist_name_text)
-    # event_date_field = actions.find_element(safsarX_selling_Tickets.data_of_elements.data.event_date_calendar)
-    # actions.send_keys(event_date_field, event_date_text)
-    # where_event_field = actions.find_element(safsarX_selling_Tickets.data_of_elements.data.event_location_field)
-    # actions.send_keys(where_event_field, where_event_text)
-    # event_time_field = actions.find_element(safsarX_selling_Tickets.data_of_elements.data.event_time_field)
-    # actions.send_keys(event_time_field, event_time_text)
-
-    next_button = actions.find_element(safsarX_selling_Tickets.data_of_elements.data.next_button)
-    actions.click_element(next_button)
-    return (actions)
-
-
 def event_style(actions, sitting_details_text, ticket_type_text, ticket_quantity_text, ticket_price_text):
     enter_inputs(actions, safsarX_selling_Tickets.data_of_elements.data.ticket_info_fields, sitting_details_text,
                  ticket_type_text, ticket_quantity_text, ticket_price_text)
 
-    # sitting_details_field = actions.find_element(safsarX_selling_Tickets.data_of_elements.data.sitting_details_field)
-    # actions.send_keys(sitting_details_field, sitting_details_text)
-    #
-    # ticket_type_field = actions.find_element(safsarX_selling_Tickets.data_of_elements.data.ticket_type_field)
-    # actions.send_keys(ticket_type_field, ticket_type_text)
-    #
-    # ticket_quantity_field = actions.find_element(safsarX_selling_Tickets.data_of_elements.data.ticket_quantity_field)
-    # actions.send_keys(ticket_quantity_field, ticket_quantity_text)
-    #
-    # ticket_price_field = actions.find_element(safsarX_selling_Tickets.data_of_elements.data.ticket_price_field)
-    # actions.send_keys(ticket_price_field, ticket_price_text)
-
-    # drv.find_element_by_id("IdOfInputTypeFile").send_keys(os.getcwd()+"/image.png")
-
-    # upload_file = actions.find_element(safsarX_selling_Tickets.data_of_elements.data.upload_file)
-    # actions.send_keys(upload_file, os.getcwd()+"/image.png")
-
     next_button = actions.find_element(safsarX_selling_Tickets.data_of_elements.data.next_button)
     actions.click_element(next_button)
 
 
-def summary_page(actions, full_name_text, bank_name_text, branch_number_text, account_number_text):
-    enter_inputs(actions, safsarX_selling_Tickets.data_of_elements.data.thread_process_info_fields, full_name_text,
-                 bank_name_text, branch_number_text, account_number_text)
 
-    # full_name_field = actions.find_element(safsarX_selling_Tickets.data_of_elements.data.full_name_field)
-    # actions.send_keys(full_name_field, full_name_text)
-    #
-    # bank_name_field = actions.find_element(safsarX_selling_Tickets.data_of_elements.data.bank_name_field)
-    # actions.send_keys(bank_name_field, bank_name_text)
-    #
-    # branch_number_field = actions.find_element(safsarX_selling_Tickets.data_of_elements.data.branch_number_field)
-    # actions.send_keys(branch_number_field, branch_number_text)
-    #
-    # account_number_field = actions.find_element(safsarX_selling_Tickets.data_of_elements.data.account_number_field)
-    # actions.send_keys(account_number_field, account_number_text)
-
-    terms_checkbox = actions.find_element(safsarX_selling_Tickets.data_of_elements.data.terms_checkbox)
-    terms_checkbox.click()
-    # קראתי את תנאי השימוש
 
 
 def success_sell_page(actions):
@@ -206,7 +145,12 @@ def page1_event_info(actions, category_name, artist_name, day, eventLocation, ti
     enter_inputs(actions, safsarX_selling_Tickets.data_of_elements.data.page1_2, eventLocation, time)
 
 
-
 def page2_ticket_info(actions, event_type, ticket_quantity, ticket_price):
-    enter_inputs(actions, safsarX_selling_Tickets.data_of_elements.data.page2, event_style, event_type, ticket_quantity, ticket_price)
+    enter_inputs(actions, safsarX_selling_Tickets.data_of_elements.data.page2, event_style, event_type, ticket_quantity,
+                 ticket_price)
     time.sleep(15)
+
+
+def page3_summary(actions, fullName, bankName, branchNumber, accountNumber):
+    enter_inputs(actions, safsarX_selling_Tickets.data_of_elements.data.page3, fullName, bankName, branchNumber,
+                 accountNumber)

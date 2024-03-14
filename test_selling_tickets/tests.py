@@ -7,7 +7,7 @@ from safsarX_selling_Tickets.data_of_elements import data
 from safsarX_selling_Tickets.selling_tickets_page.driver import webdriver_instance, Actions
 from safsarX_selling_Tickets.selling_tickets_page.funcs import page_start_screeen, \
     navigation_to_selling_tickets, register_page, page_verification_screeen, page1_event_info, \
-    page2_ticket_info
+    page2_ticket_info, click_on, page3_summary, find_page_elements
 import pytest
 
 base_url = "https://portal-dev.safsarglobal.link/"
@@ -67,11 +67,17 @@ def test_Verification_Screen_structure(expected_text):
     my_driver.get(base_url)
 
 
-def test_temp():
+def test_full_process_selling():
     navigation_to_selling_tickets(actions, '0547675277')
     page1_event_info(actions, 'ילדים', 'מאיר בנאי','14', 'היכל התרבות רחובות', '10:59AM')
-    next_button = actions.find_element((By.XPATH, "//button[text()='הבא']"))
-    actions.click_element(next_button)
-    page2_ticket_info(actions,'רגיל','כרטיס בודד','100')
+    click_on(actions,'הבא')
+    page2_ticket_info(actions, 'רגיל', 'כרטיס בודד', '100')
+    click_on(actions, 'הבא')
+    page3_summary(actions,'עמית','11 דיסקונט','12','789456')
+    click_on(actions, 'הבא')
+
+    buttons, h2_titles, paragraphs = find_page_elements(actions)
+    assert any('מכירת הכרטיסים שלך נשלחה לאישור' in paragraph for paragraph in paragraphs)
+
 
 
