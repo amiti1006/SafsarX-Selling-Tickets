@@ -6,16 +6,16 @@ enter_button = (By.XPATH, '//*[@id="root"]/main/div/div[2]/div/form/button')
 submit_button = (By.XPATH, '//*[@id="root"]/main/div/div[2]/div/form/button')
 
 log_in = {
-  "account_exist_button": (By.XPATH, '//*[@id="root"]/main/div/div[2]/div[2]/button[2]'),
-  "phone_filed": (By.XPATH, '//*[@id="root"]/main/div/div[2]/div/form/input'),
-  "enter_button": (By.XPATH, '//*[@id="root"]/main/div/div[2]/div/form/button'),
-  "submit_button": (By.XPATH, '//*[@id="root"]/main/div/div[2]/div/form/button')
+    "account_exist_button": (By.XPATH, '//*[@id="root"]/main/div/div[2]/div[2]/button[2]'),
+    "phone_filed": (By.XPATH, '//*[@id="root"]/main/div/div[2]/div/form/input'),
+    "enter_button": (By.XPATH, '//*[@id="root"]/main/div/div[2]/div/form/button'),
+    "submit_button": (By.XPATH, '//*[@id="root"]/main/div/div[2]/div/form/button')
 }
 user_info_fields = {
-  "first_name": (By.NAME, 'firstName'),
-  "last_name": (By.NAME, 'lastName'),
-  "phone_number": (By.NAME, 'phoneNumber'),
-  "id_number": (By.NAME, 'idNumber')
+    "first_name": (By.NAME, 'firstName'),
+    "last_name": (By.NAME, 'lastName'),
+    "phone_number": (By.NAME, 'phoneNumber'),
+    "id_number": (By.NAME, 'idNumber')
 }
 
 page1 = {
@@ -28,7 +28,7 @@ page1 = {
 }
 
 page1_1 = {
-"category": (By.ID, "eventInfoForm_category"),
+    "category": (By.ID, "eventInfoForm_category"),
     "showtype_single_radio": (By.XPATH, '//*[@id="eventInfoForm_artistType"]/label[1]/span[1]/input'),
     "artist_name": (By.ID, "eventInfoForm_artistName"),
 }
@@ -37,19 +37,27 @@ page1_2 = {
     "eventLocation": (By.ID, 'eventInfoForm_eventLocation'),
     "time": (By.ID, "eventInfoForm_eventTime"),
 }
+pagr1_sport = {
+    "category": (By.ID, "eventInfoForm_category"),
+    'subCategory': (By.ID, 'eventInfoForm_subCategory'),
+    'showtype_single_radio': (By.XPATH, '//*[@id="eventInfoForm_gameType"]/label[1]/span[1]/input'),
+    "gameName": (By.ID, 'eventInfoForm_gameName'),
+    "playingTeam": (By.ID, 'eventInfoForm_playingTeam'),
+    "againstTeam": (By.ID, 'eventInfoForm_againstTeam'),
+}
 
 page2 = {
-  "event_style": (By.CSS_SELECTOR,"input[value='עמידה']"),
-  "ticket_type": (By.ID,"eventInfoForm_ticketType"),
-  "ticket_quantity": (By.ID,"eventInfoForm_ticketQuantity"),
-  "ticket_price": (By.CSS_SELECTOR,"input[type='number']")
+    "event_style": (By.CSS_SELECTOR, "input[value='עמידה']"),
+    "ticket_type": (By.ID, "eventInfoForm_ticketType"),
+    "ticket_quantity": (By.ID, "eventInfoForm_ticketQuantity"),
+    "ticket_price": (By.CSS_SELECTOR, "input[type='number']")
 }
 page3 = {
     'fullName': (By.ID, 'eventInfoForm_fullName'),
     'bankName': (By.ID, 'eventInfoForm_bankName'),
     'branchNumber': (By.ID, 'eventInfoForm_branchNumber'),
     'accountNumber': (By.ID, 'eventInfoForm_accountNumber'),
-    'terms':(By.NAME, 'terms')
+    'terms': (By.NAME, 'terms')
 }
 
 # GENERAL
@@ -97,10 +105,10 @@ ticket_quantity_field = (By.ID, "eventInfoForm_ticketQuantity")
 ticket_price_field = (By.ID, "eventInfoForm_ticketPrice")
 
 ticket_info_fields = {
-  "sitting_details_field": (By.ID, "eventInfoForm_typeDescription"),
-  "ticket_type_field": (By.ID, "eventInfoForm_ticketType"),
-  "ticket_quantity_field": (By.ID, "eventInfoForm_ticketQuantity"),
-  "ticket_price_field": (By.XPATH, "//input[@type='number' and @placeholder='סכום בשקלים']"),
+    "sitting_details_field": (By.ID, "eventInfoForm_typeDescription"),
+    "ticket_type_field": (By.ID, "eventInfoForm_ticketType"),
+    "ticket_quantity_field": (By.ID, "eventInfoForm_ticketQuantity"),
+    "ticket_price_field": (By.XPATH, "//input[@type='number' and @placeholder='סכום בשקלים']"),
 }
 
 upload_file = ''
@@ -119,10 +127,10 @@ branch_number_field = (By.ID, "eventInfoForm_branchNumber")
 account_number_field = (By.ID, "eventInfoForm_accountNumber")
 
 thread_process_info_fields = {
-  "full_name_field": (By.ID, "eventInfoForm_fullName"),
-  "bank_name_field": (By.ID, "eventInfoForm_bankName"),
-  "branch_number_field": (By.ID, "eventInfoForm_branchNumber"),
-  "account_number_field": (By.ID, "eventInfoForm_accountNumber"),
+    "full_name_field": (By.ID, "eventInfoForm_fullName"),
+    "bank_name_field": (By.ID, "eventInfoForm_bankName"),
+    "branch_number_field": (By.ID, "eventInfoForm_branchNumber"),
+    "account_number_field": (By.ID, "eventInfoForm_accountNumber"),
 }
 
 terms_checkbox = (By.XPATH, "//label[text()='קראתי והסכמתי ל']/preceding-sibling/input[@type='checkbox']")

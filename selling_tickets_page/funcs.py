@@ -2,7 +2,6 @@ import time
 
 from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
-
 import safsarX_selling_Tickets.data_of_elements.data
 
 
@@ -14,7 +13,7 @@ def enter_inputs(actions, my_dict, *value):
         element = actions.find_element(key)
         dropdown = actions.get_attribute(element, 'aria-haspopup')
         isradio = actions.get_attribute(element, 'type')
-        if isradio != 'radio':
+        if isradio != 'radio' and isradio != 'checkbox':
             actions.send_keys(element, value[index])
             list_of_elements.append(element)
             if dropdown == "listbox":
@@ -93,9 +92,6 @@ def event_style(actions, sitting_details_text, ticket_type_text, ticket_quantity
     actions.click_element(next_button)
 
 
-
-
-
 def success_sell_page(actions):
     back_to_home = actions.find_element(safsarX_selling_Tickets.data_of_elements.data.back_to_home)
     actions.click_element(back_to_home)
@@ -145,10 +141,19 @@ def page1_event_info(actions, category_name, artist_name, day, eventLocation, ti
     enter_inputs(actions, safsarX_selling_Tickets.data_of_elements.data.page1_2, eventLocation, time)
 
 
+def page1_event_info_sport(actions, category_name, subCategory,gameName,playingTeam,againstTeam, day, eventLocation, time):
+    enter_inputs(actions, safsarX_selling_Tickets.data_of_elements.data.pagr1_sport, category_name, subCategory,gameName,playingTeam,againstTeam)
+
+    actions.find_element(safsarX_selling_Tickets.data_of_elements.data.page1.get("date")).click()
+    actions.find_element((By.XPATH, f".//div[text()={day}]")).click()
+
+    enter_inputs(actions, safsarX_selling_Tickets.data_of_elements.data.page1_2, eventLocation, time)
+
+
 def page2_ticket_info(actions, event_type, ticket_quantity, ticket_price):
     enter_inputs(actions, safsarX_selling_Tickets.data_of_elements.data.page2, event_style, event_type, ticket_quantity,
                  ticket_price)
-    time.sleep(15)
+    time.sleep(20)
 
 
 def page3_summary(actions, fullName, bankName, branchNumber, accountNumber):

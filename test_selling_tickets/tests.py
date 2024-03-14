@@ -1,4 +1,3 @@
-
 import time
 from selenium.webdriver.common.by import By
 
@@ -7,7 +6,7 @@ from safsarX_selling_Tickets.data_of_elements import data
 from safsarX_selling_Tickets.selling_tickets_page.driver import webdriver_instance, Actions
 from safsarX_selling_Tickets.selling_tickets_page.funcs import page_start_screeen, \
     navigation_to_selling_tickets, register_page, page_verification_screeen, page1_event_info, \
-    page2_ticket_info, click_on, page3_summary, find_page_elements
+    page2_ticket_info, click_on, page3_summary, find_page_elements, page1_event_info_sport
 import pytest
 
 base_url = "https://portal-dev.safsarglobal.link/"
@@ -68,16 +67,44 @@ def test_Verification_Screen_structure(expected_text):
 
 
 def test_full_process_selling():
-    navigation_to_selling_tickets(actions, '0547675277')
-    page1_event_info(actions, 'ילדים', 'מאיר בנאי','14', 'היכל התרבות רחובות', '10:59AM')
-    click_on(actions,'הבא')
+    navigation_to_selling_tickets(actions, '0533363708')
+    page1_event_info(actions, 'ילדים', 'מאיר בנאי', '17', 'היכל התרבות רחובות', '10:59AM')
+    click_on(actions, 'הבא')
     page2_ticket_info(actions, 'רגיל', 'כרטיס בודד', '100')
     click_on(actions, 'הבא')
-    page3_summary(actions,'עמית','11 דיסקונט','12','789456')
+    page3_summary(actions, 'עמית', '11 דיסקונט', '12', '789456')
     click_on(actions, 'הבא')
+    time.sleep(20)
 
     buttons, h2_titles, paragraphs = find_page_elements(actions)
+    for x in paragraphs:
+        print(x)
     assert any('מכירת הכרטיסים שלך נשלחה לאישור' in paragraph for paragraph in paragraphs)
 
 
+# test 1
+@pytest.mark.parametrize("price,expected_price", [('jhgjh', '₪0')])
+def test_price_is_valid(price, expected_price):
+    navigation_to_selling_tickets(actions, '0533363708')
+    page1_event_info(actions, 'ילדים', 'מאיר בנאי', '17', 'היכל התרבות רחובות', '10:59AM')
+    click_on(actions, 'הבא')
+    page2_ticket_info(actions, 'רגיל', 'כרטיס בודד', price)
+    display_price = actions.find_element((By.XPATH, '//*[@id="eventInfoForm"]/div[5]/div[2]/p')).text
+    try:
+        assert display_price == expected_price
+    except ValueError as e:
+        print(display_price, 'לא זהים', e)
+
+
+# test 2
+@pytest.mark.parametrize("actual_input,expected_price", [('!', '')])
+def test_invalid_input(actual_input,expected_price):
+    navigation_to_selling_tickets(actions, '0533363708')
+    page1_event_info_sport(actions, 'ספורט', 'כדורגל','ליגת העל בישראל',actual_input,actual_input, 17, 'גריי מודיעין', '10:59AM')
+    playingTeam = actions.find_element( safsarX_selling_Tickets.data_of_elements.data.pagr1_sport.get('playingTeam')).text
+    againstTeam = actions.find_element( safsarX_selling_Tickets.data_of_elements.data.pagr1_sport.get('againstTeam')).text
+    try:
+        assert playingTeam == expected_price
+    except ValueError as e:
+        print(playingTeam, 'מקבל גם ערכים שגויים', e)
 
