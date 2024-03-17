@@ -47,3 +47,7 @@ class Actions:
 
     def update_driver(self,driver):
         self.driver = driver
+
+    def close_driver(self):
+        self.driver.close()
+        self.driver.quit()
