@@ -60,6 +60,13 @@ page3 = {
     'terms': (By.NAME, 'terms')
 }
 
+start_screen = {
+    'register_button': (By.XPATH, "//button[text()='הרשמה']"),
+    'sign_in_button': (By.XPATH, ' //*[@id="root"]/main/div/div[2]/div[2]/button[2]'),
+    'title': (By.XPATH, "//h2[contains(text(), 'מכירת כרטיסים')]"),
+    'subtitle': (By.XPATH, "//p[contains(text(), 'שנתחיל בלהכיר')]"),
+}
+
 # GENERAL
 selling_tickets_button = (By.XPATH, '//*[@id="root"]/div[1]/div/nav/p')
 next_button = (By.XPATH, '//*[@id="eventInfoForm"]/div[4]/button')

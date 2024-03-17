@@ -21,8 +21,8 @@ class Actions:
     def __init__(self, driver):
         self.driver = driver
 
-    def find_element(self, tupel_selector):
-        my_element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located(tupel_selector))
+    def find_element(self, tuple_selector):
+        my_element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located(tuple_selector))
         return my_element
 
     def click_element(self, element):
@@ -35,12 +35,15 @@ class Actions:
         requested_attribute = element.get_attribute(attribute)
         return requested_attribute
 
-    def find_text(self, tupel_selector):
+    def find_text(self, tuple_selector):
         text_post_login_element = WebDriverWait(self.driver, 10).until(
-            EC.presence_of_element_located(tupel_selector))
+            EC.presence_of_element_located(tuple_selector))
         element_text = text_post_login_element.get_attribute('innerText')
         return element_text
 
     def find_elements(self, tuple_selector):
         my_elements = WebDriverWait(self.driver, 10).until(EC.presence_of_all_elements_located(tuple_selector))
         return my_elements
+
+    def update_driver(self,driver):
+        self.driver = driver
